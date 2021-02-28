@@ -1,0 +1,347 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    NUMBER
+
+Grammar
+
+Rule 0     S' -> data
+Rule 1     data -> participants SEMI meetings SEMI
+Rule 2     participants -> members
+Rule 3     members -> MEMBER
+Rule 4     members -> members COMMA MEMBER
+Rule 5     meetings -> meeting
+Rule 6     meetings -> meetings SEMI meeting
+Rule 7     meeting -> dead_info SEMI conclusion
+Rule 8     meeting -> dead_info SEMI testimonies SEMI conclusion
+Rule 9     dead_info -> DEAD NONE
+Rule 10    dead_info -> DEAD MEMBER
+Rule 11    testimonies -> testimony
+Rule 12    testimonies -> testimonies SEMI testimony
+Rule 13    testimony -> members TRUST members
+Rule 14    testimony -> members DOUBT members
+Rule 15    conclusion -> SKIP
+Rule 16    conclusion -> EJECT MEMBER
+
+Terminals, with rules where they appear
+
+COMMA                : 4
+DEAD                 : 9 10
+DOUBT                : 14
+EJECT                : 16
+MEMBER               : 3 4 10 16
+NONE                 : 9
+NUMBER               : 
+SEMI                 : 1 1 6 7 8 8 12
+SKIP                 : 15
+TRUST                : 13
+error                : 
+
+Nonterminals, with rules where they appear
+
+conclusion           : 7 8
+data                 : 0
+dead_info            : 7 8
+meeting              : 5 6
+meetings             : 1 6
+members              : 2 4 13 13 14 14
+participants         : 1
+testimonies          : 8 12
+testimony            : 11 12
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . data
+    (1) data -> . participants SEMI meetings SEMI
+    (2) participants -> . members
+    (3) members -> . MEMBER
+    (4) members -> . members COMMA MEMBER
+
+    MEMBER          shift and go to state 4
+
+    data                           shift and go to state 1
+    participants                   shift and go to state 2
+    members                        shift and go to state 3
+
+state 1
+
+    (0) S' -> data .
+
+
+
+state 2
+
+    (1) data -> participants . SEMI meetings SEMI
+
+    SEMI            shift and go to state 5
+
+
+state 3
+
+    (2) participants -> members .
+    (4) members -> members . COMMA MEMBER
+
+    SEMI            reduce using rule 2 (participants -> members .)
+    COMMA           shift and go to state 6
+
+
+state 4
+
+    (3) members -> MEMBER .
+
+    COMMA           reduce using rule 3 (members -> MEMBER .)
+    SEMI            reduce using rule 3 (members -> MEMBER .)
+    TRUST           reduce using rule 3 (members -> MEMBER .)
+    DOUBT           reduce using rule 3 (members -> MEMBER .)
+
+
+state 5
+
+    (1) data -> participants SEMI . meetings SEMI
+    (5) meetings -> . meeting
+    (6) meetings -> . meetings SEMI meeting
+    (7) meeting -> . dead_info SEMI conclusion
+    (8) meeting -> . dead_info SEMI testimonies SEMI conclusion
+    (9) dead_info -> . DEAD NONE
+    (10) dead_info -> . DEAD MEMBER
+
+    DEAD            shift and go to state 10
+
+    meetings                       shift and go to state 7
+    meeting                        shift and go to state 8
+    dead_info                      shift and go to state 9
+
+state 6
+
+    (4) members -> members COMMA . MEMBER
+
+    MEMBER          shift and go to state 11
+
+
+state 7
+
+    (1) data -> participants SEMI meetings . SEMI
+    (6) meetings -> meetings . SEMI meeting
+
+    SEMI            shift and go to state 12
+
+
+state 8
+
+    (5) meetings -> meeting .
+
+    SEMI            reduce using rule 5 (meetings -> meeting .)
+
+
+state 9
+
+    (7) meeting -> dead_info . SEMI conclusion
+    (8) meeting -> dead_info . SEMI testimonies SEMI conclusion
+
+    SEMI            shift and go to state 13
+
+
+state 10
+
+    (9) dead_info -> DEAD . NONE
+    (10) dead_info -> DEAD . MEMBER
+
+    NONE            shift and go to state 14
+    MEMBER          shift and go to state 15
+
+
+state 11
+
+    (4) members -> members COMMA MEMBER .
+
+    COMMA           reduce using rule 4 (members -> members COMMA MEMBER .)
+    SEMI            reduce using rule 4 (members -> members COMMA MEMBER .)
+    TRUST           reduce using rule 4 (members -> members COMMA MEMBER .)
+    DOUBT           reduce using rule 4 (members -> members COMMA MEMBER .)
+
+
+state 12
+
+    (1) data -> participants SEMI meetings SEMI .
+    (6) meetings -> meetings SEMI . meeting
+    (7) meeting -> . dead_info SEMI conclusion
+    (8) meeting -> . dead_info SEMI testimonies SEMI conclusion
+    (9) dead_info -> . DEAD NONE
+    (10) dead_info -> . DEAD MEMBER
+
+    $end            reduce using rule 1 (data -> participants SEMI meetings SEMI .)
+    DEAD            shift and go to state 10
+
+    meeting                        shift and go to state 16
+    dead_info                      shift and go to state 9
+
+state 13
+
+    (7) meeting -> dead_info SEMI . conclusion
+    (8) meeting -> dead_info SEMI . testimonies SEMI conclusion
+    (15) conclusion -> . SKIP
+    (16) conclusion -> . EJECT MEMBER
+    (11) testimonies -> . testimony
+    (12) testimonies -> . testimonies SEMI testimony
+    (13) testimony -> . members TRUST members
+    (14) testimony -> . members DOUBT members
+    (3) members -> . MEMBER
+    (4) members -> . members COMMA MEMBER
+
+    SKIP            shift and go to state 19
+    EJECT           shift and go to state 20
+    MEMBER          shift and go to state 4
+
+    conclusion                     shift and go to state 17
+    testimonies                    shift and go to state 18
+    testimony                      shift and go to state 21
+    members                        shift and go to state 22
+
+state 14
+
+    (9) dead_info -> DEAD NONE .
+
+    SEMI            reduce using rule 9 (dead_info -> DEAD NONE .)
+
+
+state 15
+
+    (10) dead_info -> DEAD MEMBER .
+
+    SEMI            reduce using rule 10 (dead_info -> DEAD MEMBER .)
+
+
+state 16
+
+    (6) meetings -> meetings SEMI meeting .
+
+    SEMI            reduce using rule 6 (meetings -> meetings SEMI meeting .)
+
+
+state 17
+
+    (7) meeting -> dead_info SEMI conclusion .
+
+    SEMI            reduce using rule 7 (meeting -> dead_info SEMI conclusion .)
+
+
+state 18
+
+    (8) meeting -> dead_info SEMI testimonies . SEMI conclusion
+    (12) testimonies -> testimonies . SEMI testimony
+
+    SEMI            shift and go to state 23
+
+
+state 19
+
+    (15) conclusion -> SKIP .
+
+    SEMI            reduce using rule 15 (conclusion -> SKIP .)
+
+
+state 20
+
+    (16) conclusion -> EJECT . MEMBER
+
+    MEMBER          shift and go to state 24
+
+
+state 21
+
+    (11) testimonies -> testimony .
+
+    SEMI            reduce using rule 11 (testimonies -> testimony .)
+
+
+state 22
+
+    (13) testimony -> members . TRUST members
+    (14) testimony -> members . DOUBT members
+    (4) members -> members . COMMA MEMBER
+
+    TRUST           shift and go to state 25
+    DOUBT           shift and go to state 26
+    COMMA           shift and go to state 6
+
+
+state 23
+
+    (8) meeting -> dead_info SEMI testimonies SEMI . conclusion
+    (12) testimonies -> testimonies SEMI . testimony
+    (15) conclusion -> . SKIP
+    (16) conclusion -> . EJECT MEMBER
+    (13) testimony -> . members TRUST members
+    (14) testimony -> . members DOUBT members
+    (3) members -> . MEMBER
+    (4) members -> . members COMMA MEMBER
+
+    SKIP            shift and go to state 19
+    EJECT           shift and go to state 20
+    MEMBER          shift and go to state 4
+
+    conclusion                     shift and go to state 27
+    testimony                      shift and go to state 28
+    members                        shift and go to state 22
+
+state 24
+
+    (16) conclusion -> EJECT MEMBER .
+
+    SEMI            reduce using rule 16 (conclusion -> EJECT MEMBER .)
+
+
+state 25
+
+    (13) testimony -> members TRUST . members
+    (3) members -> . MEMBER
+    (4) members -> . members COMMA MEMBER
+
+    MEMBER          shift and go to state 4
+
+    members                        shift and go to state 29
+
+state 26
+
+    (14) testimony -> members DOUBT . members
+    (3) members -> . MEMBER
+    (4) members -> . members COMMA MEMBER
+
+    MEMBER          shift and go to state 4
+
+    members                        shift and go to state 30
+
+state 27
+
+    (8) meeting -> dead_info SEMI testimonies SEMI conclusion .
+
+    SEMI            reduce using rule 8 (meeting -> dead_info SEMI testimonies SEMI conclusion .)
+
+
+state 28
+
+    (12) testimonies -> testimonies SEMI testimony .
+
+    SEMI            reduce using rule 12 (testimonies -> testimonies SEMI testimony .)
+
+
+state 29
+
+    (13) testimony -> members TRUST members .
+    (4) members -> members . COMMA MEMBER
+
+    SEMI            reduce using rule 13 (testimony -> members TRUST members .)
+    COMMA           shift and go to state 6
+
+
+state 30
+
+    (14) testimony -> members DOUBT members .
+    (4) members -> members . COMMA MEMBER
+
+    SEMI            reduce using rule 14 (testimony -> members DOUBT members .)
+    COMMA           shift and go to state 6
+
