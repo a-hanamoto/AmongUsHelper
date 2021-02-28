@@ -1,0 +1,14 @@
+white, black, purple, yellow, orange, brown, cyan, lime, blue, red;
+
+dead black;
+black trust purple;
+white doubt cyan;
+cyan doubt white;
+skip;
+
+dead red;
+yellow, brown trust lime, red;
+eject orange;
+
+dead none;
+eject yellow;
