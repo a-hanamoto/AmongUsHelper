@@ -33,18 +33,3 @@ def t_error(t):
 
 
 lexer = lex.lex()
-
-
-def lex_test():
-    with open("./data.txt") as f:
-        data = f.read()
-    lexer.input(data)
-    while True:
-        tok = lexer.token()
-        if not tok:
-            break
-        print(tok)
-
-
-if __name__ == "__main__":
-    lex_test()
