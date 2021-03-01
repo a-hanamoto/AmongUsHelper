@@ -1,6 +1,6 @@
 import itertools
 
-from ah_yacc import yacc_input
+from ah_yacc import parse
 
 
 def check(imps_set, crews_set, meetings_info):
@@ -24,7 +24,9 @@ def check(imps_set, crews_set, meetings_info):
                     ):
                         return False
                 else:
-                    if len(member_from_set & crews_set) != 0 and len(member_to_set & imps_set) != len(member_to_set):
+                    if len(member_from_set & crews_set) != 0 and len(
+                        member_to_set & imps_set
+                    ) != len(member_to_set):
                         return False
         if meeting.conclusion is not None:
             ejected.add(meeting.conclusion)
@@ -35,7 +37,9 @@ def check(imps_set, crews_set, meetings_info):
 
 
 def main():
-    participants, meetings_info = yacc_input()
+    with open("./data.txt") as f:
+        data = f.read()
+    participants, meetings_info = parse(data)
     participants_set = set(participants)
     num_participants = len(participants)
     for imps in itertools.combinations(participants, 2):
