@@ -113,17 +113,7 @@ def p_conclusion(p):
 start = "data"
 parser = yacc.yacc()
 
-# Debug
-def parse(data, debug=0):
-    return yacc.parse(data, debug=debug)
 
-
-def yacc_input():
-    with open("./data.txt") as f:
-        data = f.read()
-    parse(data)
+def parse(input_str):
+    yacc.parse(input_str)
     return participants, meetings_info
-
-
-if __name__ == "__main__":
-    yacc_input()
