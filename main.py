@@ -11,10 +11,12 @@ class InferenceResult:
 
     def get_output_str(self):
         ret_list = []
+        ret_list.append("INFERENCE RESULT:")
         innocent_str = ", ".join(self.innocent) if self.innocent else "NONE"
         guilty_str = ", ".join(self.guilty) if self.guilty else "NONE"
         ret_list.append(f"CLEARLY CREWMATE: {innocent_str}")
         ret_list.append(f"CLEARLY IMPOSTER: {guilty_str}")
+        ret_list.append("")
         ret_list.append("POSSIBLE IMPOSTERS:")
         for imps, dead_list in self.candidates:
             ret_list.append(
@@ -84,7 +86,7 @@ def check(imps, crews, meetings_info):
             num_left -= 1
             if num_left <= 4 and len(ejected & imps) == 0:
                 return False
-    return killer_info
+    return killer_info if killer_info else True
 
 
 def infer(input_data):
@@ -103,7 +105,10 @@ def infer(input_data):
         if killer_info:
             innocent = innocent & (participants_set - imps_set)
             guilty = guilty & imps_set
-            candidates.append((imps, killer_info))
+            if type(killer_info) == bool:
+                candidates.append((imps, []))
+            else:
+                candidates.append((imps, killer_info))
     res = InferenceResult(innocent, guilty, candidates)
     return res.get_output_str()
 

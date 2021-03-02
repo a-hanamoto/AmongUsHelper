@@ -11,8 +11,39 @@ h1 {
     padding : 10px;
 }
 
+h2 {
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+    width: 90%;
+    max-width: 800px;
+}
+
+p {
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+    width: 90%;
+    max-width: 800px;
+}
+
 h1 img {
     width: 100%;
+}
+
+.sample {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Courier New', Courier, monospace;
+    color : #ffffff;
+    background-color: #222222;
+    font-size: 16px;
+    width: 90%;
+    max-width: 800px;
+    white-space: pre-wrap;
+    padding: 10px;
+    margin-bottom: 50px;
 }
 
 textarea {
@@ -44,6 +75,7 @@ button {
 }
 
 .output {
+    text-align: left;
     margin-left: auto;
     margin-right: auto;
     font-family: 'Courier New', Courier, monospace;
@@ -51,6 +83,28 @@ button {
     font-size: 16px;
     width: 90%;
     max-width: 800px;
-    height: 30em;
     white-space: pre-wrap;
+    padding-bottom:50px;
+}
+
+footer {
+    text-align: center;
+    color: #ffffff;
+    font-size: small;
+}
+
+a:link {
+    color:#ffffff;
+}
+
+a:visited {
+    color:#ffffff;
+}
+
+a:hover {
+    color:#ffffff;
+}
+
+a:active {
+    color:#ffffff;
 }
