@@ -5,7 +5,7 @@ from ah_yacc import parse
 class TestAHYacc(unittest.TestCase):
     def test_yacc_1(self):
         input_str = "red, blue, white, purple; dead none; skip; dead blue; red, purple doubt white; eject white;"
-        participants, meetings_info = parse(input_str)
+        participants, meetings_info, _ = parse(input_str)
         self.assertEquals(len(participants), 4)
         self.assertEquals(participants[0], "red")
         self.assertEquals(participants[-1], "purple")
