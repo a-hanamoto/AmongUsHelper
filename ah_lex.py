@@ -23,7 +23,7 @@ t_DOUBT = r"doubt"
 t_DEAD = r"dead"
 t_EJECT = r"eject"
 t_SKIP = r"skip"
-t_ignore = " \t\n"
+t_ignore = " \t\n\r"
 t_ignore_COMMENT = r"\#.*"
 
 

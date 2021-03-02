@@ -15,6 +15,8 @@ class TestAHYacc(unittest.TestCase):
         self.assertIsNone(meetings_info[0].conclusion)
         self.assertEquals(meetings_info[1].dead_info, "blue")
         self.assertEquals(meetings_info[1].testimonies[0].testimony_type, "doubt")
-        self.assertEquals(meetings_info[1].testimonies[0].member_from, ["red", "purple"])
+        self.assertEquals(
+            meetings_info[1].testimonies[0].member_from, ["red", "purple"]
+        )
         self.assertEquals(meetings_info[1].testimonies[0].member_to, ["white"])
         self.assertEquals(meetings_info[1].conclusion, "white")

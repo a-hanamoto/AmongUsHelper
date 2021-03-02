@@ -2,14 +2,17 @@
 <head>
     <title>AmongUs Inference Helper</title>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="icon" href="https://img.icons8.com/ios/50/000000/among-us.png" />
 </head>
 
 <h1><img src="https://fontmeme.com/permalink/210302/8b486152078d3f364722d85128bfa9cf.png" alt="AmongUs Inference Helper"></h1>
 
+<p>AmongUs Inference Helper helps you to guess who the imposter is.</p>
+
 <body>
 <div class="main">
 	<form method="POST" action="/">
-    <textarea name="amongus_str">{{amongus_str}}</textarea>
+    <textarea name="amongus_str" maxlength="10000">{{amongus_str}}</textarea>
 	<div class="button_wrapper">
 	    <button type="submit" value="Submit">Execute Inference</button>
 	</div>
@@ -19,5 +22,36 @@
 <br>
 
 <div class="output">{{res}}</div>
+
+<h2>How to Use</h2>
+
+<p>Input game information and players' testimonies, then AmongUs Inference Helper will output possible crewmates/imposters.</p>
+
+<h2>Sample input</h2>
+
+<div class="sample"># participants
+white, black, purple, yellow, orange, brown, cyan, lime, blue, red;
+
+# black has been killed
+dead black;
+# black said purple didn't kill black
+black trust purple;
+# white said cyan killed black
+white doubt cyan;
+cyan doubt white;
+# skipped
+skip;
+
+dead red;
+# yellow and brown said neither lime nor white killed red
+yellow, brown trust lime, white;
+# orange has been ejected
+eject orange;
+
+# no one has been killed
+dead none;
+eject yellow;</div>
+
+<footer>&copy; <a href="https://mogel.la/"">mogella</a> | <a href="https://fontmeme.com/">Font Meme</a> | <a href="https://icons8.com/icon/zYP1etn5eiJ3/among-us">Icons8</a></footer>
 
 </body>
