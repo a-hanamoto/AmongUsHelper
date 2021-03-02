@@ -1,5 +1,7 @@
 # AmongUsHelper
 
+[![deployment](https://github.com/a-hanamoto/AmongUsHelper/actions/workflows/main.yml/badge.svg)](https://github.com/a-hanamoto/AmongUsHelper/actions/workflows/main.yml)
+
 AmongUsHelper helps you to guess who the imposter is.
 
 ## Quick Start
