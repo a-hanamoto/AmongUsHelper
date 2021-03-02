@@ -11,6 +11,27 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Install dependencies for test
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest
+        pip install coverage
+    - name: Run tests
+      run: coverage run -m pytest
+    - name: Publish coverage
+      uses: paambaati/codeclimate-action@v2.7.5
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageCommand: coverage xml
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
       with:
