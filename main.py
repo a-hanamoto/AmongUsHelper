@@ -88,7 +88,9 @@ def check(imps, crews, meetings_info):
 
 
 def infer(input_data):
-    participants, meetings_info = parse(input_data)
+    participants, meetings_info, error_msg = parse(input_data)
+    if error_msg is not None:
+        return error_msg
     participants_set = set(sorted(participants))
     num_participants = len(participants)
     innocent = participants_set.copy()

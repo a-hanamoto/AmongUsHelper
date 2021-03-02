@@ -3,6 +3,7 @@ from ah_lex import tokens
 
 participants = []
 meetings_info = []
+error_msg = ""
 
 
 class Testimony:
@@ -110,10 +111,19 @@ def p_conclusion(p):
         p[0] = p[2]
 
 
+def p_error(p):
+    global error_msg
+    error_msg = f"Error occured at {p}"
+
+
 start = "data"
 parser = yacc.yacc()
 
 
 def parse(input_str):
+    global participants, meetings_info, error_msg
+    participants = []
+    meetings_info = []
+    error_msg = None
     yacc.parse(input_str)
-    return participants, meetings_info
+    return participants, meetings_info, error_msg
