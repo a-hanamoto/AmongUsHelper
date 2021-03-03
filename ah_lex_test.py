@@ -12,19 +12,19 @@ class TestAHLex(unittest.TestCase):
             if not tok:
                 break
             output.append(tok)
-        self.assertEquals(len(output), 6)
-        self.assertEquals(output[0].type, "MEMBER")
-        self.assertEquals(output[0].value, "red")
-        self.assertEquals(output[1].type, "COMMA")
-        self.assertEquals(output[1].value, ",")
-        self.assertEquals(output[2].type, "MEMBER")
-        self.assertEquals(output[2].value, "blue")
-        self.assertEquals(output[3].type, "TRUST")
-        self.assertEquals(output[3].value, "trust")
-        self.assertEquals(output[4].type, "MEMBER")
-        self.assertEquals(output[4].value, "white")
-        self.assertEquals(output[5].type, "SEMI")
-        self.assertEquals(output[5].value, ";")
+        self.assertEqual(len(output), 6)
+        self.assertEqual(output[0].type, "MEMBER")
+        self.assertEqual(output[0].value, "red")
+        self.assertEqual(output[1].type, "COMMA")
+        self.assertEqual(output[1].value, ",")
+        self.assertEqual(output[2].type, "MEMBER")
+        self.assertEqual(output[2].value, "blue")
+        self.assertEqual(output[3].type, "TRUST")
+        self.assertEqual(output[3].value, "trust")
+        self.assertEqual(output[4].type, "MEMBER")
+        self.assertEqual(output[4].value, "white")
+        self.assertEqual(output[5].type, "SEMI")
+        self.assertEqual(output[5].value, ";")
 
     def test_lexer_2(self):
         input_str = "/doubt"
@@ -35,6 +35,6 @@ class TestAHLex(unittest.TestCase):
             if not tok:
                 break
             output.append(tok)
-        self.assertEquals(len(output), 1)
-        self.assertEquals(output[0].type, "DOUBT")
-        self.assertEquals(output[0].value, "doubt")
+        self.assertEqual(len(output), 1)
+        self.assertEqual(output[0].type, "DOUBT")
+        self.assertEqual(output[0].value, "doubt")
