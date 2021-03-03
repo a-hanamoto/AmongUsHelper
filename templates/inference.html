@@ -74,6 +74,24 @@ dead none;
 # 黄色が追放された
 eject yellow;</div>
 
+<h2>Inference Rules</h2>
+
+<ul>
+	<li>There are two imposters.</li>
+	<li>The number of alive imposters is less than half the number of crewmates. For example, there is only one imposter if the number of alive member is four.</li>
+	<li>If A is an imposter, all the testimonies will be ignored. i.e. This application considers A may tell the truth, or may not.</li>
+	<li>If A is a crewmate, this application considers A always tells the truth. For example, if A trusts B and A is a crewmate, this application considers B didn't kill the member. Note that it doesn't directly indicate B is a crewmate. On the other hand, if A doubts B and A is a crewmate, this application considers B is an imposter.</li>
+</ul>
+
+<h2>推論規則</h2>
+
+<ul>
+	<li>インポスターは2人いるとみなされます。</li>
+	<li>生きているインポスターの数は、生きているメンバーの半数未満であるとみなされます。例えば、生きているメンバーが4人のとき、生きているインポスターは1人とみなされます。</li>
+	<li>もしAがインポスターなら、Aの証言は全て無視されます。つまり、Aは本当のことを言っているかもしれないし、嘘をついているかもしれないとみなされます。</li>
+	<li>もしAがクルーメイトなら、Aの証言は全て正しいとみなされます。例えば、AがBをtrustしているという証言があった場合、Bはその時killしていないとみなされます。ただし、それが直ちにBがクルーメイトとみなされる訳ではありません。一方で、AがBをdoubtしていて、かつAがクルーメイトなら、Bはインポスターとみなされます。</li>
+</ul>
+
 <footer>&copy; <a href="https://mogel.la/">mogella</a> | <a href="https://github.com/a-hanamoto/AmongUsHelper">Repository</a> | <a href="https://fontmeme.com/">Font Meme</a> | <a href="https://icons8.com/icon/zYP1etn5eiJ3/among-us">Icons8</a> | <a href="https://iconscout.com/icons/among-us" target="_blank">Among Us Icon</a> by <a href="https://iconscout.com/contributors/sonisokell">Soni Sokell</a> on <a href="https://iconscout.com">Iconscout</a></footer>
 
 </body>
