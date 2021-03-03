@@ -16,50 +16,64 @@
 <h1><img src="https://fontmeme.com/permalink/210302/8b486152078d3f364722d85128bfa9cf.png" alt="AmongUs Inference Helper"></h1>
 
 <p>AmongUs Inference Helper helps you to guess who the imposter is.</p>
+<p>アマングアス推論ヘルパーはインポスターが誰かを考える手助けをします。</p>
 
 <body>
 <div class="main">
 	<form method="POST" action="/">
     <textarea name="amongus_str" maxlength="10000">{{amongus_str}}</textarea>
 	<div class="button_wrapper">
-	    <button type="submit" value="Submit">Execute Inference</button>
+	    <button type="submit" value="Submit">Execute Inference / 推論実行</button>
 	</div>
 	</form>
 </div>
 
-<br>
-
 <div class="output">{{res}}</div>
 
-<h2>How to Use</h2>
+<h2>How to Use / 使い方</h2>
 
 <p>Input game information and players' testimonies, then AmongUs Inference Helper will output possible crewmates/imposters.</p>
+<p>参加者と証言を入力すると、可能性のあるインポスターの組合せを出力します。</p>
 
-<h2>Sample input</h2>
+<h2>Sample input / サンプル入力</h2>
 
 <div class="sample"># participants
+# 参加者
 white, black, purple, yellow, orange, brown, cyan, lime, blue, red;
 
 # black has been killed
+# 黒が殺された
 dead black;
-# black said purple didn't kill black
-black trust purple;
+# lime said purple didn't kill black
+# 黄緑は、紫は黒を殺していないと証言した
+lime trust purple;
 # white said cyan killed black
+# 白は、水色が黒を殺したと証言した
 white doubt cyan;
+# cyan said white killed black
+# 水色は、白が黒を殺したと証言した
 cyan doubt white;
 # skipped
+# スキップされた
 skip;
 
+# red has been killed
+# 赤が殺された
 dead red;
 # yellow and brown said neither lime nor white killed red
+# 黄色と茶色は、黄緑も白も赤を殺していないと証言した
 yellow, brown trust lime, white;
 # orange has been ejected
+# オレンジが追放された
 eject orange;
 
 # no one has been killed
+# 誰も殺されなかった
 dead none;
+# yellow has been ejected
+# 黄色が追放された
 eject yellow;</div>
 
-<footer>&copy; <a href="https://mogel.la/"">mogella</a> | <a href="https://fontmeme.com/">Font Meme</a> | <a href="https://icons8.com/icon/zYP1etn5eiJ3/among-us">Icons8</a></footer>
+<footer>&copy; <a href="https://mogel.la/">mogella</a> | <a href="https://github.com/a-hanamoto/AmongUsHelper">Repository</a> | <a href="https://fontmeme.com/">Font Meme</a> | <a href="https://icons8.com/icon/zYP1etn5eiJ3/among-us">Icons8</a></footer>
 
 </body>
