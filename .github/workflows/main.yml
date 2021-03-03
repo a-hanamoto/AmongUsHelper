@@ -27,11 +27,11 @@ jobs:
     - name: Run tests
       run: coverage run -m pytest
     - name: Publish coverage
-      uses: paambaati/codeclimate-action@v2.5.4
+      uses: paambaati/codeclimate-action@v2.6.0
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
-        coverageCommand: coverage xml
+        coverageCommand: python -m pipenv run invoke coverage --xml
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
       with:
