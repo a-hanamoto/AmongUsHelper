@@ -26,12 +26,12 @@ jobs:
         pip install coverage
     - name: Check coverage
       run: coverage run -m pytest
-    - name: Upload coverage report
+    - name: Publish coverage
       uses: paambaati/codeclimate-action@v2.5.4
       env:
         CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
       with:
-        coverageCommand: coverage run -m pytest
+        coverageCommand: coverage xml
     - name: Set up Cloud SDK
       uses: google-github-actions/setup-gcloud@master
       with:
