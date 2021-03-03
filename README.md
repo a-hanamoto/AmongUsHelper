@@ -1,6 +1,7 @@
 # AmongUsHelper
 
 [![deployment](https://github.com/a-hanamoto/AmongUsHelper/actions/workflows/main.yml/badge.svg)](https://github.com/a-hanamoto/AmongUsHelper/actions/workflows/main.yml)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b843ddeb50a77f153eb4/test_coverage)](https://codeclimate.com/github/a-hanamoto/AmongUsHelper/test_coverage)
 
 AmongUsHelper helps you to guess who the imposter is.
 
