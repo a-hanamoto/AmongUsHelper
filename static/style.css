@@ -27,6 +27,14 @@ p {
     max-width: 800px;
 }
 
+ul {
+    margin-left: auto;
+    margin-right: auto;
+    color: #ffffff;
+    width: 90%;
+    max-width: 800px;
+}
+
 h1 img {
     width: 100%;
 }
@@ -43,7 +51,6 @@ h1 img {
     max-width: 800px;
     white-space: pre-wrap;
     padding: 10px;
-    margin-bottom: 50px;
 }
 
 textarea {
@@ -84,10 +91,10 @@ button {
     width: 90%;
     max-width: 800px;
     white-space: pre-wrap;
-    padding-bottom:50px;
 }
 
 footer {
+    padding-top:50px;
     text-align: center;
     color: #ffffff;
     font-size: small;
