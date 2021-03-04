@@ -28,7 +28,46 @@
 	</form>
 </div>
 
-<div class="output">{{res}}</div>
+<h2>Inference Result / 推論結果</h2>
+
+{% if res.error  %}
+
+<p>{{res.error}}</p>
+
+{% else %}
+
+<h3>Clearly Crewmates / 確定クルーメイト</h3>
+
+<p>{{res.innocent | safe}}</p>
+
+<h3>Clearly Imposters / 確定インポスター</h3>
+
+<p>{{res.guilty | safe}}</p>
+
+<h3>Possible Combinations of Imposters / 可能性のあるインポスターの組合せ</h3>
+
+<div class="res">
+    <table>
+      <thread>
+        <tr>
+          <th>Imposters</th>
+          <th>Kill Info</th>
+        </tr>
+      </thread>
+      <tbody>
+        {% for item in res.info %}
+        <tr>
+          <td align="center">{{ item[0] | safe}}</td>
+          <td>{{ item[1] }}</td>
+        </tr>
+        {% else %}
+          <td>no info!</td>
+        {% endfor %}
+      </tbody>
+    </table>
+</div>
+
+{% endif %}
 
 <h2>How to Use / 使い方</h2>
 

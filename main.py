@@ -2,6 +2,7 @@ import itertools
 
 from ah_yacc import parse
 
+COLOR_SET = {"black", "blue", "brown", "cyan", "green", "lime", "orange", "pink", "purple", "red", "white", "yellow"}
 
 class InferenceResult:
     def __init__(self, innocent, guilty, candidates):
@@ -9,21 +10,22 @@ class InferenceResult:
         self.guilty = guilty
         self.candidates = candidates
 
-    def get_output_str(self):
-        ret_list = []
-        ret_list.append("INFERENCE RESULT:")
-        innocent_str = ", ".join(self.innocent) if self.innocent else "NONE"
-        guilty_str = ", ".join(self.guilty) if self.guilty else "NONE"
-        ret_list.append(f"CLEARLY CREWMATE: {innocent_str}")
-        ret_list.append(f"CLEARLY IMPOSTER: {guilty_str}")
-        ret_list.append("")
-        ret_list.append("POSSIBLE IMPOSTERS:")
+    def get_output_dict(self):
+        ret = dict()
+        innocent_str = ", ".join(map(convert, self.innocent)) if self.innocent else "NONE"
+        guilty_str = ", ".join(map(convert, self.guilty)) if self.guilty else "NONE"
+        ret["innocent"] = innocent_str
+        ret["guilty"] = guilty_str
+        ret["info"] = []
         for imps, dead_list in self.candidates:
-            ret_list.append(
-                f"{', '.join(imps)} -> {', '.join(map(dead_info_to_str, dead_list))}"
-            )
-        return "\n".join(ret_list)
+            ret["info"].append((", ".join(map(convert, imps)), ", ".join(map(dead_info_to_str, dead_list))))
+        ret["error"] = ""
+        return ret
 
+def convert(input_str):
+    if input_str not in COLOR_SET:
+        return input_str
+    return f'<img src="./static/imgs/{input_str}.png" alt="{input_str}">'
 
 def dead_info_to_str(dead_info):
     return f"{' or '.join(sorted(dead_info[1]))} killed {dead_info[0]}"
@@ -92,7 +94,9 @@ def check(imps, crews, meetings_info):
 def infer(input_data):
     participants, meetings_info, error_msg = parse(input_data)
     if error_msg is not None:
-        return error_msg
+        ret = dict()
+        ret["error"] = error_msg
+        return ret
     participants_set = set(sorted(participants))
     num_participants = len(participants)
     innocent = participants_set.copy()
@@ -110,7 +114,7 @@ def infer(input_data):
             else:
                 candidates.append((imps, killer_info))
     res = InferenceResult(innocent, guilty, candidates)
-    return res.get_output_str()
+    return res.get_output_dict()
 
 
 if __name__ == "__main__":
