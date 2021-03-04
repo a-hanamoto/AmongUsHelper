@@ -10,11 +10,11 @@ def index():
     if request.method == "POST" and "amongus_str" in request.form:
         amongus_str = request.form.get("amongus_str")
         if len(amongus_str) > 10000:
-            res = "input string is too long"
+            res["error"] = "input string is too long"
         else:
             res = infer(amongus_str)
     return render_template("inference.html", amongus_str=amongus_str, res=res)
 
 
 if __name__ == "__main__":
-    app.run(threaded=True)
+    app.run(threaded=True, port="5001")
